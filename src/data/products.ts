@@ -17,10 +17,10 @@ export interface Product {
 }
 
 export const categories = [
-  { link:"https://wa.me/9342822747?text=I need areca plates",id: "areca_plates", name: "Areca plates", image: productPlate, description: "Round & square plates for every occasion" },
-  { link:"https://wa.me/9342822747?text=I need paper plates", id: "paper_plates", name: "Paper plates", image: productPaperPlate, description: "Deep bowls for soups, curries & salads" },
-  { link:"https://wa.me/9342822747?text=I need bio cups", id: "bio_cups", name: "Bio cups", image: productBioCup, description: "Rectangular trays for serving & catering" },
-  { link:"https://wa.me/9342822747?text=I need tissue papers",id: "tissue_paper", name: "Tissue paper", image: productTissue, description: "Variety sized cups" },
+  { link:"https://wa.me/9342822747?text=I need areca plates, quantity: ",id: "areca_plates", name: "Areca plates", image: productPlate, description: "Round & square plates for every occasion" },
+  { link:"https://wa.me/9342822747?text=I need paper plates, quantity: ", id: "paper_plates", name: "Paper plates", image: productPaperPlate, description: "Deep bowls for soups, curries & salads" },
+  { link:"https://wa.me/9342822747?text=I need bio cups, quantity: ", id: "bio_cups", name: "Bio cups", image: productBioCup, description: "Rectangular trays for serving & catering" },
+  { link:"https://wa.me/9342822747?text=I need tissue papers, quantity: ",id: "tissue_paper", name: "Tissue paper", image: productTissue, description: "Variety sized cups" },
 ];
 
 // export const products: Product[] = [
