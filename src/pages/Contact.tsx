@@ -90,10 +90,11 @@ const Contact = () => {
                     <h3 className="font-semibold">Factory Address</h3>
                     <p className="text-muted-foreground text-sm">
                       OM Shanmuga Enterprises
-                      <br />
-                      Plot No. 42, SIDCO Industrial Estate
-                      <br />
-                      Coimbatore - 641021, Tamil Nadu, India
+                      <br>Block B, 48, B Block,</br>
+                      <br>
+                        Thanikachalam Nagar, B Block, Ponniammanmedu, Chennai,
+                      </br>
+                      <br>Tamil Nadu 600110</br>
                     </p>
                   </div>
                 </div>

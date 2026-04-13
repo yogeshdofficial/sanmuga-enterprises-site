@@ -84,9 +84,9 @@ const Footer = () => (
               omshanmugaenterprises27@gmail.com
             </div>
             <div className="flex items-start gap-2">
-              <MapPin className="h-4 w-4 text-leaf-light mt-0.5" />
-              OM Shanmuga Enterprises Plot No. 42, SIDCO Industrial Estate
-              Coimbatore - 641021, Tamil Nadu, India
+              <MapPin className="h-4 w-4 text-leaf-light mt-0.5" />: Block B,
+              48, B Block, Thanikachalam Nagar, B Block, Ponniammanmedu,
+              Chennai, Tamil Nadu 600110
             </div>
           </div>
         </div>
