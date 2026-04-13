@@ -8,7 +8,7 @@ const navLinks = [
   { to: "/products", label: "Products", link: "/#products" },
   { to: "/about", label: "About Us", link: "" },
   // { to: "/bulk-order", label: "Bulk Order" },
-  { to: "/blog", label: "Blog", link: "" },
+  // { to: "/blog", label: "Blog", link: "" },
   { to: "/contact", label: "Contact", link: "" },
 ];
 
