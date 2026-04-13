@@ -40,14 +40,14 @@ const benefits = [
   },
 ];
 
-const certifications = [
-  "FDA Approved",
-  "ISO 9001:2015",
-  "FSSAI Certified",
-  "EU Food Grade",
-  "BIS Certified",
-  "Export Quality",
-];
+// const certifications = [
+//   "FDA Approved",
+//   "ISO 9001:2015",
+//   "FSSAI Certified",
+//   "EU Food Grade",
+//   "BIS Certified",
+//   "Export Quality",
+// ];
 
 const Index = () => (
   <Layout>
@@ -185,25 +185,6 @@ const Index = () => (
               </Link>
             </Button>
           </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Certifications */}
-    <section className="py-16 bg-muted">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl font-display font-bold mb-8">
-          Certifications & Standards
-        </h2>
-        <div className="flex flex-wrap justify-center gap-4">
-          {certifications.map((c) => (
-            <div
-              key={c}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border text-sm font-medium"
-            >
-              <Award className="h-4 w-4 text-gold" /> {c}
-            </div>
-          ))}
         </div>
       </div>
     </section>
