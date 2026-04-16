@@ -22,7 +22,7 @@ export default function ProductsMini() {
             return (
               <div
                 key={product.id}
-                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-leaf"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-leaf"
               >
                 <div className="relative aspect-square overflow-hidden bg-muted">
                   <img
@@ -40,8 +40,8 @@ export default function ProductsMini() {
                     <span>{cartItem ? "In cart" : "Ready to add"}</span>
                   </div>
                 </div>
-                <div className="space-y-4 p-5">
-                  <div>
+                <div className="flex flex-1 flex-col gap-4 p-5">
+                  <div className="flex-1">
                     <h3 className="font-display font-semibold text-lg mb-1">
                       {product.name}
                     </h3>
@@ -56,7 +56,7 @@ export default function ProductsMini() {
                     ) : null}
                   </div>
                   {cartItem ? (
-                    <div className="flex gap-2">
+                    <div className="mt-auto flex gap-2">
                       <Button
                         type="button"
                         variant="outline"
@@ -81,7 +81,7 @@ export default function ProductsMini() {
                     <Button
                       type="button"
                       onClick={() => addToCart(product)}
-                      className="w-full bg-gradient-leaf shadow-leaf"
+                      className="mt-auto w-full bg-gradient-leaf shadow-leaf"
                     >
                       <Plus className="h-4 w-4" />
                       Add to Cart
