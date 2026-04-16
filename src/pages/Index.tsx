@@ -92,21 +92,21 @@ const Index = () => (
             className="animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            {/* <img
+            <img
               src={heroImage}
               alt="Natural areca leaf plates and bowls on rustic wooden table"
               width={1920}
               height={1080}
               className="rounded-2xl shadow-2xl w-full object-cover"
-            /> */}
-            <video
+            />
+            {/* <video
               className="w-full h-[80vh] object-cover object-center rounded-sm"
               src={heroVideo}
               autoPlay
               loop
               muted
               playsInline
-            />
+            /> */}
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold">WhatsApp</h3>
                     <a
-                      href={`https://wa.me/9342822747?text=${encodeURIComponent("Hi, I'm interested in OM Shanmuga Enterprises products.")}`}
+                      href={`https://wa.me/9342822747?text=${encodeURIComponent("Hello OM Shanmuga Enterprises, I would like more information about your products, pricing, and availability. Please share the details.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary text-sm hover:underline"

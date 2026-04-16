@@ -7,21 +7,46 @@ import arecaCups from "@/assets/arecaCups.jpg";
 export interface Product {
   id: string;
   name: string;
-  category: "plates" | "bowls" | "trays" | "custom"|"cups";
   image: string;
-  size: string;
   description: string;
-  retailPrice: number;
-  bulkPricing: { minQty: number; price: number }[];
-  features: string[];
+  pricingSummary?: string;
 }
 
-export const categories = [
-  { link:"https://wa.me/9342822747?text=I need areca plates, quantity: ",id: "areca_plates", name: "Areca plates", image: productPlate, description: "Round & square plates for every occasion" },
-  { link:"https://wa.me/9342822747?text=I need paper plates, quantity: ", id: "paper_plates", name: "Paper plates", image: productPaperPlate, description: "Deep bowls for soups, curries & salads" },
-  { link:"https://wa.me/9342822747?text=I need bio cups, quantity: ", id: "bio_cups", name: "Bio cups", image: productBioCup, description: "Rectangular trays for serving & catering" },
-  { link:"https://wa.me/9342822747?text=I need tissue papers, quantity: ",id: "tissue_paper", name: "Tissue paper", image: productTissue, description: "Variety sized cups" },
+export const products: Product[] = [
+  {
+    id: "areca_plates",
+    name: "Areca plates",
+    image: productPlate,
+    description: "Round & square plates for every occasion",
+    pricingSummary:
+      '12" ₹5.8/pc · 10" ₹4.8 · 8" ₹2.8 · 6" ₹1.8 · 4" ₹1.2',
+  },
+  {
+    id: "paper_plates",
+    name: "Paper plates",
+    image: productPaperPlate,
+    description: "Deep bowls for soups, curries & salads",
+    pricingSummary:
+      'ITC paper plate packs: 6" ₹15 · 7" ₹17 · 8" ₹21 · 9" ₹23 · 10" ₹29 · 11" ₹40 · 12" ₹50 · 13" ₹58 (24 pcs)',
+  },
+  {
+    id: "bio_cups",
+    name: "Bio cups",
+    image: productBioCup,
+    description: "Rectangular trays for serving & catering",
+    pricingSummary: "Bulk pricing available on request",
+  },
+  {
+    id: "tissue_paper",
+    name: "Tissue paper",
+    image: productTissue,
+    description: "Variety sized cups",
+    pricingSummary:
+      "50 pcs ₹13/pkt · 75 pcs ₹18/pkt · 100 pcs ₹24/pkt",
+  },
 ];
+
+export const categories = products;
 
 // export const products: Product[] = [
 //   {

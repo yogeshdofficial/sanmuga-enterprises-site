@@ -12,43 +12,27 @@ import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
-
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import ProductsPage from "./pages/Products.tsx";
-
-function ScrollToHash() {
-  const { hash } = useLocation();
-
-  useEffect(() => {
-    if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, [hash]);
-
-  return null;
-}
+import { CartProvider } from "./providers/CartProvider.tsx";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/bulk-order" element={<ProductsPage />} />
-          {/* <Route path="/blog" element={<Blog />} /> */}
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <CartProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/bulk-order" element={<BulkOrder />} />
+            {/* <Route path="/blog" element={<Blog />} /> */}
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </CartProvider>
   </QueryClientProvider>
 );
 

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpeg";
+import CartDrawer from "@/components/CartDrawer";
 const navLinks = [
   { to: "/", label: "Home", link: "" },
   { to: "/products", label: "Products", link: "/#products" },
   { to: "/about", label: "About Us", link: "" },
-  // { to: "/bulk-order", label: "Bulk Order" },
+  { to: "/bulk-order", label: "Bulk Order" },
   // { to: "/blog", label: "Blog", link: "" },
   { to: "/contact", label: "Contact", link: "" },
 ];
@@ -45,6 +46,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
+          <CartDrawer />
           {/* <Button asChild variant="outline" size="sm">
             <Link to="/bulk-order">Bulk Order</Link> */}
           {/* </Button> */}
@@ -81,6 +83,7 @@ const Navbar = () => {
               {/* <Button asChild variant="outline" size="sm" className="flex-1">
                 <Link to="/bulk-order" onClick={() => setOpen(false)}>Bulk Order</Link>
               </Button> */}
+              <CartDrawer triggerClassName="flex-1" />
               <Button asChild size="sm" className="flex-1 bg-gradient-leaf">
                 <Link to="/contact" onClick={() => setOpen(false)}>
                   Contact Us

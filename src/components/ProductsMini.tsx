@@ -1,10 +1,12 @@
-import { categories } from "@/data/products";
-import React from "react";
-import { Link } from "react-router-dom";
+import { products } from "@/data/products";
+import { useCart } from "@/providers/cart-context";
+import { Minus, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function ProductsMini() {
+  const { cart, addToCart, updateQuantity } = useCart();
   return (
-    <section id="products" className="py-20 bg-muted">
+    <section id="products" className="py-20 bg-muted/40">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl lg:text-4xl font-display font-bold text-center mb-4">
           Our Products
@@ -14,32 +16,81 @@ export default function ProductsMini() {
           bowls, trays & custom sizes
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              to={`${cat.link}`}
-              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-leaf transition-all"
-            >
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  loading="lazy"
-                  width={800}
-                  height={800}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+          {products.map((product) => {
+            const cartItem = cart.find((item) => item.id === product.id);
+
+            return (
+              <div
+                key={product.id}
+                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-leaf"
+              >
+                <div className="relative aspect-square overflow-hidden bg-muted">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    width={800}
+                    height={800}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
+                    <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold text-primary-foreground">
+                      {cartItem ? cartItem.quantity : 0}
+                    </span>
+                    <span>{cartItem ? "In cart" : "Ready to add"}</span>
+                  </div>
+                </div>
+                <div className="space-y-4 p-5">
+                  <div>
+                    <h3 className="font-display font-semibold text-lg mb-1">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {product.description}
+                    </p>
+                    {product.pricingSummary ? (
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground/90">
+                        <span className="font-medium text-primary">Price:</span>{" "}
+                        {product.pricingSummary}
+                      </p>
+                    ) : null}
+                  </div>
+                  {cartItem ? (
+                    <div className="flex gap-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() =>
+                          updateQuantity(product.id, cartItem.quantity - 1)
+                        }
+                      >
+                        <Minus className="h-4 w-4" />
+                        Decrease
+                      </Button>
+                      <Button
+                        type="button"
+                        onClick={() => addToCart(product)}
+                        className="flex-1 bg-gradient-leaf shadow-leaf"
+                      >
+                        <Plus className="h-4 w-4" />
+                        Add More ({cartItem.quantity})
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button
+                      type="button"
+                      onClick={() => addToCart(product)}
+                      className="w-full bg-gradient-leaf shadow-leaf"
+                    >
+                      <Plus className="h-4 w-4" />
+                      Add to Cart
+                    </Button>
+                  )}
+                </div>
               </div>
-              <div className="p-5">
-                <h3 className="font-display font-semibold text-lg mb-1">
-                  {cat.name}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {cat.description}
-                </p>
-              </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
