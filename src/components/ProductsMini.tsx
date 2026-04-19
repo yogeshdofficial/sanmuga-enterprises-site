@@ -1,10 +1,21 @@
+import { useState } from "react";
+
 import { products } from "@/data/products";
+import { cn } from "@/lib/utils";
 import { useCart } from "@/providers/cart-context";
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ProductsMini() {
   const { cart, addToCart, updateQuantity } = useCart();
+  const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>(
+    {},
+  );
+
+  const selectSize = (productId: string, size: string) => {
+    setSelectedSizes((current) => ({ ...current, [productId]: size }));
+  };
+
   return (
     <section id="products" className="py-20 bg-muted/40">
       <div className="container mx-auto px-4">
@@ -17,7 +28,13 @@ export default function ProductsMini() {
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product) => {
-            const cartItem = cart.find((item) => item.id === product.id);
+            const selectedSize = selectedSizes[product.id] ?? product.sizes[0];
+            const cartItem = cart.find(
+              (item) => item.id === product.id && item.size === selectedSize,
+            );
+            const productQuantity = cart
+              .filter((item) => item.id === product.id)
+              .reduce((count, item) => count + item.quantity, 0);
 
             return (
               <div
@@ -54,6 +71,34 @@ export default function ProductsMini() {
                         {product.pricingSummary}
                       </p>
                     ) : null}
+                    <div className="mt-4 space-y-2">
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        Choose size
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {product.sizes.map((size) => {
+                          const isSelected = size === selectedSize;
+
+                          return (
+                            <Button
+                              key={size}
+                              type="button"
+                              size="sm"
+                              variant={isSelected ? "default" : "outline"}
+                              className={cn(
+                                "h-8 rounded-full px-3 text-xs",
+                                isSelected &&
+                                  "bg-primary text-primary-foreground",
+                              )}
+                              onClick={() => selectSize(product.id, size)}
+                              aria-pressed={isSelected}
+                            >
+                              {size}
+                            </Button>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                   {cartItem ? (
                     <div className="mt-auto flex gap-2">
@@ -62,7 +107,11 @@ export default function ProductsMini() {
                         variant="outline"
                         className="flex-1"
                         onClick={() =>
-                          updateQuantity(product.id, cartItem.quantity - 1)
+                          updateQuantity(
+                            product.id,
+                            selectedSize,
+                            cartItem.quantity - 1,
+                          )
                         }
                       >
                         <Minus className="h-4 w-4" />
@@ -70,7 +119,7 @@ export default function ProductsMini() {
                       </Button>
                       <Button
                         type="button"
-                        onClick={() => addToCart(product)}
+                        onClick={() => addToCart(product, selectedSize)}
                         className="flex-1 bg-gradient-leaf shadow-leaf"
                       >
                         <Plus className="h-4 w-4" />
@@ -78,14 +127,21 @@ export default function ProductsMini() {
                       </Button>
                     </div>
                   ) : (
-                    <Button
-                      type="button"
-                      onClick={() => addToCart(product)}
-                      className="mt-auto w-full bg-gradient-leaf shadow-leaf"
-                    >
-                      <Plus className="h-4 w-4" />
-                      Add to Cart
-                    </Button>
+                    <div className="mt-auto space-y-2">
+                      <Button
+                        type="button"
+                        onClick={() => addToCart(product, selectedSize)}
+                        className="w-full bg-gradient-leaf shadow-leaf"
+                      >
+                        <Plus className="h-4 w-4" />
+                        Add to Cart
+                      </Button>
+                      {productQuantity > 0 ? (
+                        <p className="text-center text-xs text-muted-foreground">
+                          {productQuantity} total in cart across all sizes
+                        </p>
+                      ) : null}
+                    </div>
                   )}
                 </div>
               </div>

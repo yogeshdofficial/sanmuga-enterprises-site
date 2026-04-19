@@ -1,8 +1,10 @@
 import { createContext, useContext } from "react";
 
 import type { Product } from "@/data/products";
+import { products } from "@/data/products";
 
 export interface CartItem extends Product {
+  size: string;
   quantity: number;
 }
 
@@ -16,9 +18,9 @@ export interface CheckoutDetails {
 export interface CartContextValue {
   cart: CartItem[];
   cartCount: number;
-  addToCart: (product: Product) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  removeFromCart: (productId: string) => void;
+  addToCart: (product: Product, size?: string) => void;
+  updateQuantity: (productId: string, size: string, quantity: number) => void;
+  removeFromCart: (productId: string, size: string) => void;
   clearCart: () => void;
   buildCheckoutUrl: (details: CheckoutDetails) => string;
 }
@@ -55,6 +57,14 @@ const isCartItem = (value: unknown): value is CartItem => {
   );
 };
 
+const getDefaultSizeForProduct = (productId: string) =>
+  products.find((product) => product.id === productId)?.sizes[0] ?? "Standard";
+
+const normalizeCartItem = (item: CartItem): CartItem => ({
+  ...item,
+  size: item.size || getDefaultSizeForProduct(item.id),
+});
+
 export const readStoredCart = (): CartItem[] => {
   if (typeof window === "undefined") {
     return [];
@@ -73,7 +83,7 @@ export const readStoredCart = (): CartItem[] => {
       return [];
     }
 
-    return parsedCart.filter(isCartItem);
+    return parsedCart.filter(isCartItem).map(normalizeCartItem);
   } catch {
     return [];
   }
@@ -84,7 +94,9 @@ export const getCartCount = (cart: CartItem[]) =>
 
 export const buildCheckoutMessage = (cart: CartItem[], details: CheckoutDetails) => {
   const productLines = cart
-    .map((item, index) => `${index + 1}. ${item.name} x ${item.quantity}`)
+    .map(
+      (item, index) => `${index + 1}. ${item.name} - ${item.size} x ${item.quantity}`,
+    )
     .join("\n");
 
   return [

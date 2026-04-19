@@ -9,6 +9,7 @@ export interface Product {
   name: string;
   image: string;
   description: string;
+  sizes: string[];
   pricingSummary?: string;
 }
 
@@ -18,6 +19,7 @@ export const products: Product[] = [
     name: "Areca plates",
     image: productPlate,
     description: "Round & square plates for every occasion",
+    sizes: ['4"', '6"', '8"', '10"', '12"'],
     pricingSummary:
       '12" ₹5.8/pc · 10" ₹4.8 · 8" ₹2.8 · 6" ₹1.8 · 4" ₹1.2',
   },
@@ -26,6 +28,7 @@ export const products: Product[] = [
     name: "Paper plates",
     image: productPaperPlate,
     description: "Deep bowls for soups, curries & salads",
+    sizes: ['6"', '7"', '8"', '9"', '10"', '11"', '12"', '13"'],
     pricingSummary:
       'ITC paper plate packs: 6" ₹15 · 7" ₹17 · 8" ₹21 · 9" ₹23 · 10" ₹29 · 11" ₹40 · 12" ₹50 · 13" ₹58 (24 pcs)',
   },
@@ -34,6 +37,7 @@ export const products: Product[] = [
     name: "Bio cups",
     image: productBioCup,
     description: "Rectangular trays for serving & catering",
+    sizes: ["150 ml", "200 ml", "250 ml", "300 ml"],
     pricingSummary: "Bulk pricing available on request",
   },
   {
@@ -41,6 +45,7 @@ export const products: Product[] = [
     name: "Tissue paper",
     image: productTissue,
     description: "Variety sized cups",
+    sizes: ["50 pcs", "75 pcs", "100 pcs"],
     pricingSummary:
       "50 pcs ₹13/pkt · 75 pcs ₹18/pkt · 100 pcs ₹24/pkt",
   },

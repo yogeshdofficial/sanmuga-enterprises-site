@@ -23,37 +23,52 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, size?: string) => {
+    const selectedSize = size ?? product.sizes[0] ?? "Standard";
+
     setCart((currentCart) => {
-      const existingItem = currentCart.find((item) => item.id === product.id);
+      const existingItem = currentCart.find(
+        (item) => item.id === product.id && item.size === selectedSize,
+      );
 
       if (!existingItem) {
-        return [...currentCart, { ...product, quantity: 1 }];
+        return [
+          ...currentCart,
+          { ...product, size: selectedSize, quantity: 1 },
+        ];
       }
 
       return currentCart.map((item) =>
-        item.id === product.id
+        item.id === product.id && item.size === selectedSize
           ? { ...item, quantity: item.quantity + 1 }
           : item,
       );
     });
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (
+    productId: string,
+    size: string,
+    quantity: number,
+  ) => {
     setCart((currentCart) => {
       if (quantity <= 0) {
-        return currentCart.filter((item) => item.id !== productId);
+        return currentCart.filter(
+          (item) => item.id !== productId || item.size !== size,
+        );
       }
 
       return currentCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item,
+        item.id === productId && item.size === size
+          ? { ...item, quantity }
+          : item,
       );
     });
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId: string, size: string) => {
     setCart((currentCart) =>
-      currentCart.filter((item) => item.id !== productId),
+      currentCart.filter((item) => item.id !== productId || item.size !== size),
     );
   };
 

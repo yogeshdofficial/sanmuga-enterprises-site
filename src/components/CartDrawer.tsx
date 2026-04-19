@@ -113,13 +113,16 @@ const CartDrawer = ({ triggerClassName }: CartDrawerProps) => {
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <h3 className="truncate font-semibold">{item.name}</h3>
+                      <p className="text-xs font-medium text-primary">
+                        Size: {item.size}
+                      </p>
                       <p className="text-xs text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
                     <button
                       type="button"
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.id, item.size)}
                       className="text-muted-foreground transition-colors hover:text-destructive"
                       aria-label={`Remove ${item.name}`}
                     >
@@ -132,7 +135,7 @@ const CartDrawer = ({ triggerClassName }: CartDrawerProps) => {
                       <button
                         type="button"
                         onClick={() =>
-                          updateQuantity(item.id, item.quantity - 1)
+                          updateQuantity(item.id, item.size, item.quantity - 1)
                         }
                         className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
                         aria-label={`Decrease quantity of ${item.name}`}
@@ -144,7 +147,7 @@ const CartDrawer = ({ triggerClassName }: CartDrawerProps) => {
                       </span>
                       <button
                         type="button"
-                        onClick={() => addToCart(item)}
+                        onClick={() => addToCart(item, item.size)}
                         className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
                         aria-label={`Increase quantity of ${item.name}`}
                       >
