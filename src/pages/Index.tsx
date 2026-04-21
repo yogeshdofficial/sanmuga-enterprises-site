@@ -11,11 +11,41 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import heroImage from "@/assets/hero-products.jpg";
 import heroVideo from "@/assets/heroVideo.mp4";
+import bannerOne from "@/assets/banner-1.jpeg";
+import bannerTwo from "@/assets/banner-2.jpeg";
+import bannerThree from "@/assets/banner-4.jpeg";
 import processImage from "@/assets/process-collection.jpg";
 import { categories, testimonials } from "@/data/products";
 import ProductsMini from "@/components/ProductsMini";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+const heroSlides = [
+  {
+    src: bannerOne,
+    alt: "Natural areca leaf plates arranged for display",
+  },
+  {
+    src: bannerTwo,
+    alt: "Eco-friendly areca leaf tableware in a product showcase",
+  },
+  {
+    src: bannerThree,
+    alt: "Areca leaf plates presented as sustainable tableware",
+  },
+];
+
+const heroAutoplay = Autoplay({
+  delay: 3500,
+  stopOnInteraction: false,
+  stopOnMouseEnter: true,
+  playOnInit: true,
+});
 
 const benefits = [
   {
@@ -51,6 +81,32 @@ const benefits = [
 
 const Index = () => (
   <Layout>
+    <section className="bg-background pt-6 lg:pt-10">
+      <div className="container mx-auto px-4">
+        <Carousel
+          opts={{ loop: true }}
+          plugins={[heroAutoplay]}
+          className="w-full"
+        >
+          <CarouselContent>
+            {heroSlides.map((slide) => (
+              <CarouselItem key={slide.alt}>
+                <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-xl">
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    width={1600}
+                    height={720}
+                    className="aspect-[16/7] w-full object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+    </section>
+
     {/* Hero */}
     <section className="relative overflow-hidden bg-gradient-hero">
       <div className="container mx-auto px-4 py-20 lg:py-28">
@@ -92,21 +148,14 @@ const Index = () => (
             className="animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            <img
-              src={heroImage}
-              alt="Natural areca leaf plates and bowls on rustic wooden table"
-              width={1920}
-              height={1080}
-              className="rounded-2xl shadow-2xl w-full object-cover"
-            />
-            {/* <video
-              className="w-full h-[80vh] object-cover object-center rounded-sm"
+            <video
+              className="aspect-[16/10] w-full rounded-2xl object-cover shadow-2xl"
               src={heroVideo}
               autoPlay
               loop
               muted
               playsInline
-            /> */}
+            />
           </div>
         </div>
       </div>
