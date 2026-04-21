@@ -20,11 +20,16 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-3 min-w-0">
           {/* <Leaf className="h-7 w-7 text-primary" /> */}
-          <img src={logo} alt="" className="w-10 h-10" />
-          <span className="font-display text-xl font-bold text-foreground">
-            OM <span className="text-primary">Shanmuga</span>
+          <img src={logo} alt="" className="h-10 w-10 shrink-0" />
+          <span className="flex min-w-0 flex-col leading-tight">
+            <span className="font-display text-lg font-bold tracking-tight text-foreground whitespace-nowrap sm:text-xl">
+              OM <span className="text-primary">Shanmuga</span>
+            </span>
+            <span className="text-[10px] font-medium tracking-[0.18em] text-muted-foreground uppercase sm:text-xs">
+              Natures's Plate, Perfectly Made
+            </span>
           </span>
         </Link>
 
