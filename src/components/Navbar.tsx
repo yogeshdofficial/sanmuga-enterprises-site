@@ -27,7 +27,7 @@ const Navbar = () => {
             <span className="font-display text-lg font-bold tracking-tight text-foreground whitespace-nowrap sm:text-xl">
               OM <span className="text-primary">Shanmuga</span>
             </span>
-            <span className="text-[10px] font-medium tracking-[0.18em] text-muted-foreground uppercase sm:text-xs">
+            <span className="text-[9px] font-normal italic tracking-wide text-muted-foreground/80 sm:text-[10px]">
               Natures's Plate, Perfectly Made
             </span>
           </span>
