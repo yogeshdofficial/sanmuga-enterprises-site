@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { products, categories } from "@/data/products";
 import { cn } from "@/lib/utils";
+import { ProductImageCarousel } from "./ProductImageCarousel";
 import { useCart } from "@/providers/cart-context";
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -64,21 +65,15 @@ export default function ProductsMini() {
                 key={product.id}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-leaf"
               >
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    width={800}
-                    height={800}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
-                    <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold text-primary-foreground">
-                      {cartItem ? cartItem.quantity : 0}
-                    </span>
-                    <span>{cartItem ? "In cart" : "Ready to add"}</span>
-                  </div>
+                <ProductImageCarousel
+                  images={product.images}
+                  productName={product.name}
+                />
+                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
+                  <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold text-primary-foreground">
+                    {cartItem ? cartItem.quantity : 0}
+                  </span>
+                  <span>{cartItem ? "In cart" : "Ready to add"}</span>
                 </div>
                 <div className="flex flex-1 flex-col gap-4 p-5">
                   <div className="flex-1">

@@ -7,7 +7,7 @@ import arecaCups from "@/assets/arecaCups.jpg";
 export interface Product {
   id: string;
   name: string;
-  image: string;
+  images: string[];
   description: string;
   sizes: string[];
   pricingSummary?: string;
@@ -18,7 +18,7 @@ export const products: Product[] = [
   {
     id: "areca_plates",
     name: "Areca plates",
-    image: productPlate,
+    images: [productPlate,productPlate],
     description: "Round & square plates for every occasion",
     sizes: ['4"', '6"', '8"', '10"', '12"'],
     pricingSummary:
@@ -28,7 +28,7 @@ export const products: Product[] = [
   {
     id: "paper_plates",
     name: "Paper plates",
-    image: productPaperPlate,
+    images: [productPaperPlate],
     description: "Deep bowls for soups, curries & salads",
     sizes: ['6"', '7"', '8"', '9"', '10"', '11"', '12"', '13"'],
     pricingSummary:
@@ -38,7 +38,7 @@ export const products: Product[] = [
   {
     id: "bio_cups",
     name: "Bio cups",
-    image: productBioCup,
+    images: [productBioCup],
     description: "Rectangular trays for serving & catering",
     sizes: ["150 ml", "200 ml", "250 ml", "300 ml"],
     pricingSummary: "Bulk pricing available on request",
@@ -47,7 +47,7 @@ export const products: Product[] = [
   {
     id: "tissue_paper",
     name: "Tissue paper",
-    image: productTissue,
+    images: [productTissue],
     description: "Variety sized cups",
     sizes: ["50 pcs", "75 pcs", "100 pcs"],
     pricingSummary:
