@@ -12,10 +12,31 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    const whatsappMessage = `Hello OM Shanmuga Enterprises, I have a new inquiry:
+Name: ${name}
+Email: ${email || "Not provided"}
+Phone: ${phone}
+Subject: ${subject || "Not provided"}
+Message: ${message}
+`;
+
+    const whatsappUrl = `https://wa.me/9342822747?text=${encodeURIComponent(
+      whatsappMessage,
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+
     setSubmitted(true);
     toast({
       title: "Message Sent!",
-      description: "We'll get back to you soon.",
+      description: "Redirecting to WhatsApp...",
     });
   };
 
@@ -141,14 +162,19 @@ const Contact = () => {
                       <label className="text-sm font-medium mb-1.5 block">
                         Name *
                       </label>
-                      <Input required placeholder="Your name" maxLength={100} />
+                      <Input
+                        name="name"
+                        required
+                        placeholder="Your name"
+                        maxLength={100}
+                      />
                     </div>
                     <div>
                       <label className="text-sm font-medium mb-1.5 block">
-                        Email *
+                        Email
                       </label>
                       <Input
-                        required
+                        name="email"
                         type="email"
                         placeholder="email@example.com"
                         maxLength={255}
@@ -157,9 +183,11 @@ const Contact = () => {
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-1.5 block">
-                      Phone
+                      Phone *
                     </label>
                     <Input
+                      name="phone"
+                      required
                       type="tel"
                       placeholder="+91 98765 43210"
                       maxLength={20}
@@ -167,10 +195,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-1.5 block">
-                      Subject *
+                      Subject
                     </label>
                     <Input
-                      required
+                      name="subject"
                       placeholder="How can we help?"
                       maxLength={200}
                     />
@@ -180,6 +208,7 @@ const Contact = () => {
                       Message *
                     </label>
                     <Textarea
+                      name="message"
                       required
                       placeholder="Tell us about your requirements..."
                       rows={5}
