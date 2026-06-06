@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { products } from "@/data/products";
+import { products, categories } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/providers/cart-context";
 import { Minus, Plus } from "lucide-react";
@@ -11,10 +11,16 @@ export default function ProductsMini() {
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>(
     {},
   );
+  const [selectedCategory, setSelectedCategory] = useState("View All");
 
   const selectSize = (productId: string, size: string) => {
     setSelectedSizes((current) => ({ ...current, [productId]: size }));
   };
+
+  const filteredProducts =
+    selectedCategory === "View All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   return (
     <section id="products" className="py-20 bg-muted/40">
@@ -26,8 +32,25 @@ export default function ProductsMini() {
           Premium eco-friendly areca leaf tableware — biodegradable plates,
           bowls, trays & custom sizes
         </p>
+        <div className="flex justify-center flex-wrap gap-2 mb-12">
+          <Button
+            variant={selectedCategory === "View All" ? "default" : "outline"}
+            onClick={() => setSelectedCategory("View All")}
+          >
+            View All
+          </Button>
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => {
+          {filteredProducts.map((product) => {
             const selectedSize = selectedSizes[product.id] ?? product.sizes[0];
             const cartItem = cart.find(
               (item) => item.id === product.id && item.size === selectedSize,

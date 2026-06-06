@@ -11,6 +11,7 @@ export interface Product {
   description: string;
   sizes: string[];
   pricingSummary?: string;
+  category: string;
 }
 
 export const products: Product[] = [
@@ -22,6 +23,7 @@ export const products: Product[] = [
     sizes: ['4"', '6"', '8"', '10"', '12"'],
     pricingSummary:
       '12" ₹5.8/pc · 10" ₹4.8 · 8" ₹2.8 · 6" ₹1.8 · 4" ₹1.2',
+    category: "Areca Plates",
   },
   {
     id: "paper_plates",
@@ -31,6 +33,7 @@ export const products: Product[] = [
     sizes: ['6"', '7"', '8"', '9"', '10"', '11"', '12"', '13"'],
     pricingSummary:
       'ITC paper plate packs: 6" ₹15 · 7" ₹17 · 8" ₹21 · 9" ₹23 · 10" ₹29 · 11" ₹40 · 12" ₹50 · 13" ₹58 (24 pcs)',
+    category: "Paper Plates",
   },
   {
     id: "bio_cups",
@@ -39,6 +42,7 @@ export const products: Product[] = [
     description: "Rectangular trays for serving & catering",
     sizes: ["150 ml", "200 ml", "250 ml", "300 ml"],
     pricingSummary: "Bulk pricing available on request",
+    category: "Bio Cups",
   },
   {
     id: "tissue_paper",
@@ -48,10 +52,16 @@ export const products: Product[] = [
     sizes: ["50 pcs", "75 pcs", "100 pcs"],
     pricingSummary:
       "50 pcs ₹13/pkt · 75 pcs ₹18/pkt · 100 pcs ₹24/pkt",
+    category: "Tissue Paper",
   },
 ];
 
-export const categories = products;
+export const categories = [
+  "Areca Plates",
+  "Paper Plates",
+  "Bio Cups",
+  "Tissue Paper",
+];
 
 // export const products: Product[] = [
 //   {
