@@ -73,7 +73,7 @@ export default function FeaturedProductsCarousel() {
                       src={product.image}
                       alt={product.name}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-active:scale-125"
+                      className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-active:scale-125"
                     />
                   </div>
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/20 group-hover:opacity-100">
