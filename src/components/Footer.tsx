@@ -30,12 +30,6 @@ const Footer = () => (
             >
               About Us
             </Link>
-            {/* <Link
-              to="/bulk-order"
-              className="hover:text-leaf-light transition-colors"
-            >
-              Bulk Order
-            </Link> */}
             <Link
               to="/blog"
               className="hover:text-leaf-light transition-colors"

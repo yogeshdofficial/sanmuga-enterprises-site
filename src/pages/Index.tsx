@@ -12,12 +12,13 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import heroVideo from "@/assets/heroVideo.mp4";
-import bannerOne from "@/assets/banner-1.jpeg";
-import bannerTwo from "@/assets/banner-2.jpeg";
-import bannerThree from "@/assets/banner-4.jpeg";
-import processImage from "@/assets/process-collection.jpg";
+import bannerOne from "@/assets/banner-1.webp";
+import bannerTwo from "@/assets/banner-2.webp";
+import bannerThree from "@/assets/banner-4.webp";
+import processImage from "@/assets/process-collection.webp";
 import { categories, testimonials } from "@/data/products";
 import ProductsMini from "@/components/ProductsMini";
+import FeaturedProductsCarousel from "@/components/FeaturedProductsCarousel";
 import {
   Carousel,
   CarouselContent,
@@ -69,15 +70,6 @@ const benefits = [
     desc: "Naturally water-resistant for hot & cold food",
   },
 ];
-
-// const certifications = [
-//   "FDA Approved",
-//   "ISO 9001:2015",
-//   "FSSAI Certified",
-//   "EU Food Grade",
-//   "BIS Certified",
-//   "Export Quality",
-// ];
 
 const Index = () => (
   <Layout>
@@ -155,12 +147,14 @@ const Index = () => (
               loop
               muted
               playsInline
+              aria-hidden="true"
             />
           </div>
         </div>
       </div>
     </section>
     <ProductsMini />
+    <FeaturedProductsCarousel />
     {/* Benefits */}
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">

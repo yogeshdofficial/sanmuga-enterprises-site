@@ -9,7 +9,7 @@ const navLinks = [
   { to: "/products", label: "Products", link: "/#products" },
   { to: "/about", label: "About Us", link: "" },
   { to: "/bulk-order", label: "Bulk Order" },
-  // { to: "/blog", label: "Blog", link: "" },
+  { to: "/blog", label: "Blog", link: "" },
   { to: "/contact", label: "Contact", link: "" },
 ];
 
@@ -22,7 +22,11 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-3 min-w-0">
           {/* <Leaf className="h-7 w-7 text-primary" /> */}
-          <img src={logo} alt="" className="h-10 w-10 shrink-0" />
+          <img
+            src={logo}
+            alt="Om Shanmuga Enterprises logo"
+            className="h-10 w-10 shrink-0"
+          />
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="font-display text-lg font-bold tracking-tight text-foreground whitespace-nowrap sm:text-xl">
               OM <span className="text-primary">Shanmuga</span>
@@ -52,16 +56,18 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-2">
           <CartDrawer />
-          {/* <Button asChild variant="outline" size="sm">
-            <Link to="/bulk-order">Bulk Order</Link> */}
-          {/* </Button> */}
           <Button asChild size="sm" className="bg-gradient-leaf">
             <Link to="/contact">Contact Us</Link>
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)}>
+        <button
+          className="md:hidden p-2"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+        >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>

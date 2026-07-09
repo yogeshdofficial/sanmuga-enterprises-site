@@ -50,7 +50,7 @@ const isCartItem = (value: unknown): value is CartItem => {
   return (
     typeof item.id === "string" &&
     typeof item.name === "string" &&
-    typeof item.image === "string" &&
+    Array.isArray(item.images) &&
     typeof item.description === "string" &&
     typeof item.quantity === "number" &&
     item.quantity > 0

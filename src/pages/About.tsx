@@ -2,8 +2,7 @@ import { Leaf, Award, Users, Globe, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import processImage from "@/assets/process-collection.jpg";
-import heroImage from "@/assets/hero-products.jpg";
+import processImage from "@/assets/process-collection.webp";
 
 const steps = [
   {

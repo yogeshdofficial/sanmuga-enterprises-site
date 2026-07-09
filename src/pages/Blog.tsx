@@ -2,7 +2,7 @@ import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { blogPosts } from "@/data/products";
-import processImage from "@/assets/process-collection.jpg";
+import processImage from "@/assets/process-collection.webp";
 
 const Blog = () => (
   <Layout>

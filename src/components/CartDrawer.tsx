@@ -107,6 +107,7 @@ const CartDrawer = ({ triggerClassName }: CartDrawerProps) => {
                 <img
                   src={item.image}
                   alt={item.name}
+                  loading="lazy"
                   className="h-16 w-16 flex-shrink-0 rounded-lg object-cover"
                 />
                 <div className="min-w-0 flex-1">
