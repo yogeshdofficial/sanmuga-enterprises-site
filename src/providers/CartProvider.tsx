@@ -24,7 +24,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, [cart]);
 
   const addToCart = (product: Product, size?: string) => {
-    const selectedSize = size ?? product.sizes[0] ?? "Standard";
+    const selectedSize = size ?? "Standard";
 
     setCart((currentCart) => {
       const existingItem = currentCart.find(

@@ -1,7 +1,6 @@
 import { createContext, useContext } from "react";
 
 import type { Product } from "@/data/products";
-import { products } from "@/data/products";
 
 export interface CartItem extends Product {
   size: string;
@@ -57,12 +56,13 @@ const isCartItem = (value: unknown): value is CartItem => {
   );
 };
 
-const getDefaultSizeForProduct = (productId: string) =>
-  products.find((product) => product.id === productId)?.sizes[0] ?? "Standard";
+const DEFAULT_SIZE = "Standard";
+
+const getDefaultSizeForProduct = () => DEFAULT_SIZE;
 
 const normalizeCartItem = (item: CartItem): CartItem => ({
   ...item,
-  size: item.size || getDefaultSizeForProduct(item.id),
+  size: item.size || getDefaultSizeForProduct(),
 });
 
 export const readStoredCart = (): CartItem[] => {

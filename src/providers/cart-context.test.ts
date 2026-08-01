@@ -13,11 +13,13 @@ import {
 const makeItem = (overrides: Partial<CartItem> = {}): CartItem => ({
   id: "areca_plates",
   name: "Areca plates",
-  images: ["img.webp"],
+  price: "₹ 2.80/Piece",
+  specs: { Shape: "Round" },
   description: "Round & square plates for every occasion",
-  sizes: ['4"', '6"', '8"'],
+  images: ["img.webp"],
+  image: "img.webp",
   category: "Areca Plates",
-  size: '6"',
+  size: "Standard",
   quantity: 1,
   ...overrides,
 });
@@ -125,6 +127,6 @@ describe("readStoredCart", () => {
     );
 
     const result = readStoredCart();
-    expect(result[0].size).toBe('4"'); // first size of areca_plates in product data
+    expect(result[0].size).toBe("Standard");
   });
 });

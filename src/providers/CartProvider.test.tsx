@@ -5,8 +5,8 @@ import { CartProvider } from "./CartProvider";
 import { useCart } from "./cart-context";
 import { products } from "@/data/products";
 
-const arecaPlates = products.find((p) => p.id === "areca_plates")!;
-const secondProduct = products.find((p) => p.id !== "areca_plates")!;
+const arecaPlates = products[0];
+const secondProduct = products.find((p) => p.id !== arecaPlates.id)!;
 
 // A minimal consumer component that exercises every cart action via buttons,
 // so we test the provider the way a real component would use it.
