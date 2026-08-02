@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { Minus, Plus, ShoppingCart } from "lucide-react";
+import { Plus, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { QuantityInput } from "@/components/QuantityInput";
 import {
   Carousel,
   CarouselContent,
@@ -23,7 +24,7 @@ import { useCart } from "@/providers/cart-context";
 interface ProductDetailDialogProps {
   product: Product | null;
   onClose: () => void;
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (product: Product, quantity: number) => void;
 }
 
 function ProductDetailDialog({
@@ -32,11 +33,16 @@ function ProductDetailDialog({
   onAddToCart,
 }: ProductDetailDialogProps) {
   const { cart } = useCart();
-  const quantity = product
+  const [quantity, setQuantity] = useState(1);
+  const quantityInCart = product
     ? cart
         .filter((item) => item.id === product.id)
         .reduce((count, item) => count + item.quantity, 0)
     : 0;
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [product]);
 
   return (
     <Dialog open={product !== null} onOpenChange={(open) => !open && onClose()}>
@@ -110,16 +116,24 @@ function ProductDetailDialog({
               </p>
             ) : null}
 
-            <Button
-              type="button"
-              onClick={() => onAddToCart(product)}
-              className="w-full bg-gradient-leaf shadow-leaf"
-            >
-              <Plus className="h-4 w-4" />
-              {quantity > 0
-                ? `Add More (${quantity} in cart)`
-                : "Add to Cart"}
-            </Button>
+            <div className="flex items-center gap-2">
+              <QuantityInput
+                value={quantity}
+                onChange={setQuantity}
+                ariaLabel={`Quantity of ${product.name}`}
+                className="h-10"
+              />
+              <Button
+                type="button"
+                onClick={() => onAddToCart(product, quantity)}
+                className="flex-1 bg-gradient-leaf shadow-leaf"
+              >
+                <Plus className="h-4 w-4" />
+                {quantityInCart > 0
+                  ? `Add ${quantity} More (${quantityInCart} in cart)`
+                  : "Add to Cart"}
+              </Button>
+            </div>
           </>
         ) : null}
       </DialogContent>
@@ -221,8 +235,87 @@ function ProductImageGallery({ product, onView }: ProductImageGalleryProps) {
   );
 }
 
-export default function ProductsMini() {
+interface ProductCardProps {
+  product: Product;
+  productQuantity: number;
+  onView: () => void;
+}
+
+function ProductCard({ product, productQuantity, onView }: ProductCardProps) {
   const { cart, addToCart, updateQuantity } = useCart();
+  const [addQuantity, setAddQuantity] = useState(1);
+
+  const removeOne = () => {
+    const item = cart.find((cartItem) => cartItem.id === product.id);
+    updateQuantity(
+      product.id,
+      item?.size ?? "Standard",
+      productQuantity - 1,
+    );
+  };
+
+  return (
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-leaf">
+      <div className="relative aspect-square w-full overflow-hidden bg-muted">
+        <ProductImageGallery product={product} onView={onView} />
+        {productQuantity > 0 ? (
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm backdrop-blur">
+            <ShoppingCart className="h-3 w-3" />
+            {productQuantity}
+          </span>
+        ) : null}
+      </div>
+      <div className="flex items-center justify-between gap-2 p-3">
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium">{product.name}</p>
+          <p className="text-xs text-muted-foreground">{product.price}</p>
+        </div>
+      </div>
+      <div className="mt-auto space-y-2 p-3 pt-0">
+        <div className="flex items-center justify-between gap-2">
+          <QuantityInput
+            value={addQuantity}
+            onChange={setAddQuantity}
+            ariaLabel={`Quantity of ${product.name}`}
+            className="flex-1 rounded-lg"
+          />
+          <Button
+            type="button"
+            size="sm"
+            onClick={() => {
+              addToCart(product, undefined, addQuantity);
+              setAddQuantity(1);
+            }}
+            aria-label={`Add ${addQuantity} of ${product.name} to cart`}
+            className="h-8 bg-primary/10 text-primary shadow-none hover:bg-primary hover:text-primary-foreground"
+          >
+            <Plus className="h-3.5 w-3.5" />
+            Add
+          </Button>
+        </div>
+        {productQuantity > 0 ? (
+          <div className="flex items-center justify-between text-xs font-medium text-primary">
+            <span className="inline-flex items-center gap-1">
+              <ShoppingCart className="h-3 w-3" />
+              {productQuantity} in cart
+            </span>
+            <button
+              type="button"
+              onClick={removeOne}
+              aria-label={`Remove one ${product.name} from cart`}
+              className="transition-colors hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              Remove
+            </button>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+export default function ProductsMini() {
+  const { cart, addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("View All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -287,83 +380,14 @@ export default function ProductsMini() {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {category.products.map((product) => {
-                    const productQuantity = quantityFor(product);
-
-                    return (
-                      <div
-                        key={product.id}
-                        className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-leaf"
-                      >
-                        <div className="relative aspect-square w-full overflow-hidden bg-muted">
-                          <ProductImageGallery
-                            product={product}
-                            onView={() => setSelectedProduct(product)}
-                          />
-                          {productQuantity > 0 ? (
-                            <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm backdrop-blur">
-                              <ShoppingCart className="h-3 w-3" />
-                              {productQuantity}
-                            </span>
-                          ) : null}
-                        </div>
-                        <div className="flex items-center justify-between gap-2 p-3">
-                          <div className="min-w-0">
-                            <p className="truncate text-sm font-medium">
-                              {product.name}
-                            </p>
-                            <p className="text-xs text-muted-foreground">
-                              {product.price}
-                            </p>
-                          </div>
-                        </div>
-                        {productQuantity > 0 ? (
-                          <div className="mt-auto flex w-full items-stretch divide-x divide-primary/10">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                const item = cart.find(
-                                  (cartItem) => cartItem.id === product.id,
-                                );
-                                updateQuantity(
-                                  product.id,
-                                  item?.size ?? "Standard",
-                                  productQuantity - 1,
-                                );
-                              }}
-                              aria-label={`Remove one ${product.name} from cart`}
-                              className="flex flex-1 items-center justify-center gap-1.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                            >
-                              <Minus className="h-3.5 w-3.5" />
-                              Remove
-                            </button>
-                            <div className="flex flex-1 items-center justify-center bg-primary/5 py-2 text-xs font-semibold text-primary">
-                              {productQuantity} in cart
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => addToCart(product)}
-                              aria-label={`Add one more ${product.name} to cart`}
-                              className="flex flex-1 items-center justify-center gap-1.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                            >
-                              <Plus className="h-3.5 w-3.5" />
-                              Add
-                            </button>
-                          </div>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => addToCart(product)}
-                            aria-label={`Add ${product.name} to cart`}
-                            className="mt-auto flex w-full items-center justify-center gap-1.5 bg-primary/10 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                          >
-                            <Plus className="h-3.5 w-3.5" />
-                            Add to Cart
-                          </button>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {category.products.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      productQuantity={quantityFor(product)}
+                      onView={() => setSelectedProduct(product)}
+                    />
+                  ))}
                 </div>
               </div>
             );
@@ -374,7 +398,9 @@ export default function ProductsMini() {
       <ProductDetailDialog
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
-        onAddToCart={addToCart}
+        onAddToCart={(product, quantity) =>
+          addToCart(product, undefined, quantity)
+        }
       />
     </section>
   );

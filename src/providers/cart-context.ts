@@ -17,7 +17,7 @@ export interface CheckoutDetails {
 export interface CartContextValue {
   cart: CartItem[];
   cartCount: number;
-  addToCart: (product: Product, size?: string) => void;
+  addToCart: (product: Product, size?: string, quantity?: number) => void;
   updateQuantity: (productId: string, size: string, quantity: number) => void;
   removeFromCart: (productId: string, size: string) => void;
   clearCart: () => void;

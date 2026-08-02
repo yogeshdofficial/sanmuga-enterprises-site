@@ -23,8 +23,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product: Product, size?: string) => {
+  const addToCart = (product: Product, size?: string, quantity = 1) => {
     const selectedSize = size ?? "Standard";
+    const safeQuantity = Math.max(1, Math.floor(quantity));
 
     setCart((currentCart) => {
       const existingItem = currentCart.find(
@@ -34,13 +35,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       if (!existingItem) {
         return [
           ...currentCart,
-          { ...product, size: selectedSize, quantity: 1 },
+          { ...product, size: selectedSize, quantity: safeQuantity },
         ];
       }
 
       return currentCart.map((item) =>
         item.id === product.id && item.size === selectedSize
-          ? { ...item, quantity: item.quantity + 1 }
+          ? { ...item, quantity: item.quantity + safeQuantity }
           : item,
       );
     });

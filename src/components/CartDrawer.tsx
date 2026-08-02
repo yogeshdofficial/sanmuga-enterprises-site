@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import type { CartItem } from "@/providers/cart-context";
 import {
   Sheet,
   SheetContent,
@@ -21,6 +22,68 @@ const emptyDetails = {
   phone: "",
   address: "",
   note: "",
+};
+
+interface QuantityEditorProps {
+  item: CartItem;
+  onDecrement: () => void;
+  onIncrement: () => void;
+  onSetQuantity: (quantity: number) => void;
+}
+
+const QuantityEditor = ({
+  item,
+  onDecrement,
+  onIncrement,
+  onSetQuantity,
+}: QuantityEditorProps) => {
+  const [draft, setDraft] = useState(String(item.quantity));
+
+  useEffect(() => {
+    setDraft(String(item.quantity));
+  }, [item.quantity]);
+
+  const commit = () => {
+    const next = parseInt(draft, 10);
+    onSetQuantity(Number.isNaN(next) ? 1 : Math.max(0, next));
+  };
+
+  return (
+    <div className="inline-flex items-center overflow-hidden rounded-full border border-border bg-background">
+      <button
+        type="button"
+        onClick={onDecrement}
+        disabled={item.quantity <= 0}
+        aria-label={`Decrease quantity of ${item.name}`}
+        className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        <Minus className="h-3.5 w-3.5" />
+      </button>
+      <input
+        type="number"
+        inputMode="numeric"
+        min={0}
+        value={draft}
+        onChange={(event) => setDraft(event.target.value)}
+        onBlur={commit}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            event.currentTarget.blur();
+          }
+        }}
+        aria-label={`Quantity of ${item.name}`}
+        className="h-8 w-12 border-0 bg-transparent text-center text-sm font-medium focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+      />
+      <button
+        type="button"
+        onClick={onIncrement}
+        aria-label={`Increase quantity of ${item.name}`}
+        className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      >
+        <Plus className="h-3.5 w-3.5" />
+      </button>
+    </div>
+  );
 };
 
 interface CartDrawerProps {
@@ -132,29 +195,16 @@ const CartDrawer = ({ triggerClassName }: CartDrawerProps) => {
                   </div>
 
                   <div className="mt-3 flex items-center justify-between gap-2">
-                    <div className="inline-flex items-center rounded-full border border-border bg-background">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          updateQuantity(item.id, item.size, item.quantity - 1)
-                        }
-                        className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
-                        aria-label={`Decrease quantity of ${item.name}`}
-                      >
-                        <Minus className="h-3.5 w-3.5" />
-                      </button>
-                      <span className="min-w-8 px-2 text-center text-sm font-medium">
-                        {item.quantity}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => addToCart(item, item.size)}
-                        className="flex h-8 w-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
-                        aria-label={`Increase quantity of ${item.name}`}
-                      >
-                        <Plus className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
+                    <QuantityEditor
+                      item={item}
+                      onDecrement={() =>
+                        updateQuantity(item.id, item.size, item.quantity - 1)
+                      }
+                      onIncrement={() => addToCart(item, item.size)}
+                      onSetQuantity={(quantity) =>
+                        updateQuantity(item.id, item.size, quantity)
+                      }
+                    />
                     <span className="text-xs font-medium text-primary">
                       Added to cart
                     </span>
