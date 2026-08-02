@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Plus, ShoppingCart } from "lucide-react";
+import { Minus, Plus, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -222,7 +222,7 @@ function ProductImageGallery({ product, onView }: ProductImageGalleryProps) {
 }
 
 export default function ProductsMini() {
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, updateQuantity } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("View All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -316,19 +316,51 @@ export default function ProductsMini() {
                               {product.price}
                             </p>
                           </div>
-                          <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-leaf-lighter text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                            <Plus className="h-4 w-4" />
-                          </span>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => addToCart(product)}
-                          aria-label={`Add ${product.name} to cart`}
-                          className="mt-auto flex w-full items-center justify-center gap-1.5 bg-primary/10 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                        >
-                          <Plus className="h-3.5 w-3.5" />
-                          Add to Cart
-                        </button>
+                        {productQuantity > 0 ? (
+                          <div className="mt-auto flex w-full items-stretch divide-x divide-primary/10">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const item = cart.find(
+                                  (cartItem) => cartItem.id === product.id,
+                                );
+                                updateQuantity(
+                                  product.id,
+                                  item?.size ?? "Standard",
+                                  productQuantity - 1,
+                                );
+                              }}
+                              aria-label={`Remove one ${product.name} from cart`}
+                              className="flex flex-1 items-center justify-center gap-1.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            >
+                              <Minus className="h-3.5 w-3.5" />
+                              Remove
+                            </button>
+                            <div className="flex flex-1 items-center justify-center bg-primary/5 py-2 text-xs font-semibold text-primary">
+                              {productQuantity} in cart
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => addToCart(product)}
+                              aria-label={`Add one more ${product.name} to cart`}
+                              className="flex flex-1 items-center justify-center gap-1.5 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            >
+                              <Plus className="h-3.5 w-3.5" />
+                              Add
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => addToCart(product)}
+                            aria-label={`Add ${product.name} to cart`}
+                            className="mt-auto flex w-full items-center justify-center gap-1.5 bg-primary/10 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          >
+                            <Plus className="h-3.5 w-3.5" />
+                            Add to Cart
+                          </button>
+                        )}
                       </div>
                     );
                   })}
