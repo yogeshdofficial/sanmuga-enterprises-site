@@ -26,15 +26,24 @@ import img_2859595637830_01 from "@/assets/disposable-utensils/12-inch-sugarcane
 import img_2859595637830_02 from "@/assets/disposable-utensils/12-inch-sugarcane-bagasse-round-plate/2859595637830_02.jpg";
 import img_2859595637830_03 from "@/assets/disposable-utensils/12-inch-sugarcane-bagasse-round-plate/2859595637830_03.jpg";
 import img_2859627979012_01 from "@/assets/disposable-utensils/6-inchdisposable-biodegradable-bagasse-round-plate/2859627979012_01.jpg";
+import img_2859627979012_alt from "@/assets/6ib.jpeg";
 import img_2859627980833_01 from "@/assets/disposable-utensils/10-inch-3-compartment-disposable-round-plate/2859627980833_01.jpg";
+import img_2859627980833_alt from "@/assets/10icom.jpeg";
 import img_2859627980833_02 from "@/assets/disposable-utensils/10-inch-3-compartment-disposable-round-plate/2859627980833_02.jpg";
 import img_2859627990848_01 from "@/assets/disposable-utensils/eco-sense-biodegradable-disposable-1d-food-tray/2859627990848_01.jpg";
 import img_2859627977612_01 from "@/assets/disposable-utensils/7-inch-organic-disposable-round-plate/2859627977612_01.jpg";
+import img_2859627977612_alt from "@/assets/7ib.jpeg";
 import img_2859627978133_01 from "@/assets/disposable-utensils/9-inch-organic-disposable-round-plate/2859627978133_01.jpg";
+import img_2859627978133_alt from "@/assets/9ib.jpeg";
 import img_2859627980148_01 from "@/assets/disposable-utensils/12-inch-4-compartment-round-disposable-plate/2859627980148_01.jpg";
+import img_2859627980148_alt from "@/assets/12icom.jpeg";
 import img_2859595631791_01 from "@/assets/disposable-utensils/10-inch-sugarcane-bagasse-plates/2859595631791_01.jpg";
 import img_2859595631791_02 from "@/assets/disposable-utensils/10-inch-sugarcane-bagasse-plates/2859595631791_02.jpg";
 import img_2859627994455_01 from "@/assets/disposable-utensils/360-ml-disposable-organic-round-bowl/2859627994455_01.jpg";
+import i360 from "@/assets/360bowl.jpeg";
+import ibs from "@/assets/1lb.png";
+import absq from "@/assets/180mlb.jpeg";
+import ibq from "@/assets/7sp.jpeg";
 import img_2858903401748_01 from "@/assets/biodegradable-paper-plate/7-inch-biodegradable-paper-plate/2858903401748_01.jpeg";
 import img_2858903401748_02 from "@/assets/biodegradable-paper-plate/7-inch-biodegradable-paper-plate/2858903401748_02.jpeg";
 import img_2858903401748_03 from "@/assets/biodegradable-paper-plate/7-inch-biodegradable-paper-plate/2858903401748_03.png";
@@ -278,7 +287,7 @@ export const productCategories: ProductCategory[] = [
           "Usage": "Restaurant, Caterer, Takeaway, Household, Hotel, Event, Party",
         },
         description: "Eco-friendly round plate made from sugarcane bagasse, designed for single-use food service. Durable, compostable, and microwave-safe, ideal for catering, events, and food stalls seeking sustainable alternatives to plastic tableware.",
-        images: [img_2859627979012_01],
+        images: [img_2859627979012_01, img_2859627979012_alt],
         image: img_2859627979012_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/6-inchdisposable-biodegradable-bagasse-round-plate-2859627979012.html",
@@ -295,7 +304,7 @@ export const productCategories: ProductCategory[] = [
           "Usage": "Takeaway, Household, Hotel, Event, Party, Restaurant, Caterer",
         },
         description: "These 7-inch round plates are 100% organic, non-toxic, and eco-friendly. Microwave and refrigerator safe, they feature oil and water repellent properties. Ideal for catering, events, and food service, with 25 pieces per pack.",
-        images: [img_2859627977612_01],
+        images: [img_2859627977612_01, img_2859627977612_alt],
         image: img_2859627977612_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/7-inch-organic-disposable-round-plate-2859627977612.html",
@@ -312,7 +321,7 @@ export const productCategories: ProductCategory[] = [
           "Usage": "Takeaway, Caterer, Party, Household, Restaurant, Hotel, Event",
         },
         description: "These 9-inch round plates are 100% organic, non-toxic, and microwave/refrigerator safe. Designed with oil and water-repellent properties, they are ideal for eco-friendly catering, events, and food service applications. Supplied in packs of 25.",
-        images: [img_2859627978133_01],
+        images: [img_2859627978133_01, img_2859627978133_alt],
         image: img_2859627978133_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/9-inch-organic-disposable-round-plate-2859627978133.html",
@@ -330,7 +339,7 @@ export const productCategories: ProductCategory[] = [
           "Usage": "Party, Airline, Street food, Event, Catering, Restaurant, Corporate pantry, Railway, Household",
         },
         description: "These 10-inch 3-compartment round plates are non-toxic, 100% organic, and oil/water repellent. Microwave and refrigerator safe, they are ideal for catering, events, and food service. Packaged 25 pieces per pack with 1000 pieces per carton.",
-        images: [img_2859627980833_01, img_2859627980833_02],
+        images: [img_2859627980833_01, img_2859627980833_alt, img_2859627980833_02],
         image: img_2859627980833_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/10-inch-3-compartment-disposable-round-plate-2859627980833.html",
@@ -367,7 +376,7 @@ export const productCategories: ProductCategory[] = [
           "Usage": "Restaurant, Event, Corporate pantry, Street food, Airline, Catering, Party, Household, Railway",
         },
         description: "These 12-inch round plates feature four compartments for organized food serving. They are non-toxic, 100% organic, microwave and refrigerator safe, and oil/water repellent. Ideal for catering, events, and eco-friendly food service applications.",
-        images: [img_2859627980148_01],
+        images: [img_2859627980148_01, img_2859627980148_alt],
         image: img_2859627980148_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/12-inch-4-compartment-round-disposable-plate-2859627980148.html",
@@ -402,7 +411,7 @@ export const productCategories: ProductCategory[] = [
           "Microwave Safe": "Yes",
         },
         description: "These 12 oz organic round bowls are non-toxic, microwave and refrigerator safe, and feature oil and water repellent properties. Ideal for eco-friendly food service, each carton contains 1000 pieces with 25 pieces per pack.",
-        images: [img_2859627994455_01],
+        images: [img_2859627994455_01, i360],
         image: img_2859627994455_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/360-ml-disposable-organic-round-bowl-2859627994455.html",
@@ -435,7 +444,7 @@ export const productCategories: ProductCategory[] = [
           "Plate Type": "Square",
         },
         description: "These 7-inch square disposable plates from Redwing Bioware are designed for eco-friendly food service. Each pack contains 50 pieces, suitable for catering, events, and food outlets requiring convenient, single-use tableware solutions.",
-        images: [img_2859627982033_01],
+        images: [img_2859627982033_01, ibq],
         image: img_2859627982033_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/7-inch-square-disposable-plates-2859627982033.html",
@@ -455,7 +464,7 @@ export const productCategories: ProductCategory[] = [
           "Pack Size": "25 pieces",
         },
         description: "These 6 oz round bowls are 100% organic, non-toxic, and microwave/refrigerator safe. Designed with oil and water repellent properties, they are ideal for eco-friendly food service. Each pack contains 50 units with 2400 pieces per carton.",
-        images: [img_2859627994933_01],
+        images: [img_2859627994933_01, absq],
         image: img_2859627994933_01,
         category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/180-ml-disposable-organic-round-bowl-2859627994933.html",
@@ -609,11 +618,11 @@ export const productCategories: ProductCategory[] = [
     ],
   },
   {
-    name: "Bagasse Paper Cup",
+    name: "Disposable Paper Cup",
     products: [
       {
         id: "placeholder-cup-8oz",
-        name: "8 oz Bagasse Paper Cup",
+        name: "8 oz Disposable Paper Cup",
         price: "₹ Price on request",
         moq: "10 Pack",
         specs: {
@@ -624,14 +633,14 @@ export const productCategories: ProductCategory[] = [
           "Lid Type": "Without Lid",
           "Application": "Hot/Cold Beverages",
         },
-        description: "8 oz Bagasse Paper Cup is suitable for serving tea, coffee, and other hot or cold beverages. Made from quality paper material, lightweight and hygienic, ideal for offices, events, and catering services. Placeholder details pending final product photos and pricing.",
+        description: "8 oz Disposable Paper Cup is suitable for serving tea, coffee, and other hot or cold beverages. Made from quality paper material, lightweight and hygienic, ideal for offices, events, and catering services. Placeholder details pending final product photos and pricing.",
         images: [img_biocups_placeholder],
         image: img_biocups_placeholder,
-        category: "Bagasse Paper Cup",
+        category: "Disposable Paper Cup",
       },
       {
         id: "placeholder-cup-10oz",
-        name: "10 oz Bagasse Paper Cup",
+        name: "10 oz Disposable Paper Cup",
         price: "₹ Price on request",
         moq: "10 Pack",
         specs: {
@@ -642,14 +651,14 @@ export const productCategories: ProductCategory[] = [
           "Lid Type": "Without Lid",
           "Application": "Hot/Cold Beverages",
         },
-        description: "10 oz Bagasse Paper Cup is suitable for serving tea, coffee, and other hot or cold beverages. Made from quality paper material, lightweight and hygienic, ideal for offices, events, and catering services. Placeholder details pending final product photos and pricing.",
+        description: "10 oz Disposable Paper Cup is suitable for serving tea, coffee, and other hot or cold beverages. Made from quality paper material, lightweight and hygienic, ideal for offices, events, and catering services. Placeholder details pending final product photos and pricing.",
         images: [img_biocups_placeholder],
         image: img_biocups_placeholder,
-        category: "Bagasse Paper Cup",
+        category: "Disposable Paper Cup",
       },
       {
         id: "placeholder-cup-12oz",
-        name: "12 oz Bagasse Paper Cup",
+        name: "12 oz Disposable Paper Cup",
         price: "₹ Price on request",
         moq: "10 Pack",
         specs: {
@@ -660,14 +669,14 @@ export const productCategories: ProductCategory[] = [
           "Lid Type": "Without Lid",
           "Application": "Hot/Cold Beverages",
         },
-        description: "12 oz Bagasse Paper Cup is suitable for serving tea, coffee, and other hot or cold beverages. Made from quality paper material, lightweight and hygienic, ideal for offices, events, and catering services. Placeholder details pending final product photos and pricing.",
+        description: "12 oz Disposable Paper Cup is suitable for serving tea, coffee, and other hot or cold beverages. Made from quality paper material, lightweight and hygienic, ideal for offices, events, and catering services. Placeholder details pending final product photos and pricing.",
         images: [img_biocups_placeholder],
         image: img_biocups_placeholder,
-        category: "Bagasse Paper Cup",
+        category: "Disposable Paper Cup",
       },
       {
         id: "2858855062773",
-        name: "90 ml Bagasse Paper Cup",
+        name: "90 ml Disposable Paper Cup",
         price: "₹ 30/Pack",
         moq: "10 Pack",
         specs: {
@@ -678,15 +687,15 @@ export const productCategories: ProductCategory[] = [
           "Lid Type": "Without Lid",
           "Application": "Hot/Cold Beverages",
         },
-        description: "90 ml Bagasse Paper Cup is compact and convenient for serving tea, coffee, and other hot or cold beverages. They are made from quality paper material that is lightweight, hygienic, and suitable for single-use purposes. These cups are ideal for offices, events, parties, and catering services, ensuring easy serving and quick disposal.",
+        description: "90 ml Disposable Paper Cup is compact and convenient for serving tea, coffee, and other hot or cold beverages. They are made from quality paper material that is lightweight, hygienic, and suitable for single-use purposes. These cups are ideal for offices, events, parties, and catering services, ensuring easy serving and quick disposal.",
         images: [img_2858855062773_01, img_2858855062773_02, img_2858855062773_03],
         image: img_2858855062773_01,
-        category: "Bagasse Paper Cup",
+        category: "Disposable Paper Cup",
         detailUrl: "//www.indiamart.com/proddetail/90-ml-Bagasse-paper-cup-2858855062773.html",
       },
       {
         id: "2858855063491",
-        name: "210 ml Bagasse Paper Cup",
+        name: "210 ml Disposable Paper Cup",
         price: "₹ 47/Pack",
         moq: "10 Pack",
         specs: {
@@ -697,10 +706,10 @@ export const productCategories: ProductCategory[] = [
           "Lid Type": "Without Lid",
           "Application": "Hot/Cold Beverages",
         },
-        description: "210 ml Bagasse Paper Cup is designed for serving tea, coffee, juice, and other beverages in a convenient and hygienic way. They are made from quality paper material that is sturdy, lightweight, and suitable for single-use applications. These cups are widely used in offices, events, parties, and catering services for easy serving and quick disposal.",
+        description: "210 ml Disposable Paper Cup is designed for serving tea, coffee, juice, and other beverages in a convenient and hygienic way. They are made from quality paper material that is sturdy, lightweight, and suitable for single-use applications. These cups are widely used in offices, events, parties, and catering services for easy serving and quick disposal.",
         images: [img_2858855063491_01, img_2858855063491_02],
         image: img_2858855063491_01,
-        category: "Bagasse Paper Cup",
+        category: "Disposable Paper Cup",
         detailUrl: "//www.indiamart.com/proddetail/210-ml-Bagasse-paper-cup-2858855063491.html",
       },
     ],
@@ -760,7 +769,7 @@ export const productCategories: ProductCategory[] = [
           "Suitable for": "Retail Shop",
         },
         description: "A standard Bisleri 1L PET Packaged Drinking Water is renowned for its purity and crisp, refreshing taste. It is an ideal, convenient size for daily hydration, whether you are at home, at work, or on the go.",
-        images: [img_2859590371073_01, img_2859590371073_02],
+        images: [ibs, img_2859590371073_01, img_2859590371073_02],
         image: img_2859590371073_01,
         category: "PET Packaged Drinking Water",
         detailUrl: "//www.indiamart.com/proddetail/1l-pet-packaged-drinking-water-2859590371073.html",
