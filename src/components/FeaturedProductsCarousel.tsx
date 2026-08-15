@@ -15,6 +15,10 @@ import fp1 from "@/assets/FP1.webp";
 import fp2 from "@/assets/fp2.webp";
 import fp3 from "@/assets/FP3.webp";
 import fp4 from "@/assets/FP4.webp";
+import fp5 from "@/assets/FP5.jpeg";
+import fp6 from "@/assets/FP6.jpeg";
+import fp7 from "@/assets/FP7.jpeg";
+import fp8 from "@/assets/fp8.jpeg";
 
 interface FeaturedProduct {
   name: string;
@@ -22,10 +26,14 @@ interface FeaturedProduct {
 }
 
 const featuredProducts: FeaturedProduct[] = [
-  { name: '5" Round Areca Plate', image: fp1 },
+  // { name: '5" Round Areca Plate', image: fp1 },
   { name: "Areca Plate Range", image: fp2 },
-  { name: '12" Round Compartment Plate', image: fp3 },
+  // { name: '12" Round Compartment Plate', image: fp3 },
   { name: '8" Round Areca Plate', image: fp4 },
+  { name: '8" Round Areca Plate', image: fp5 },
+  { name: '8" Round Areca Plate', image: fp6 },
+  { name: '8" Round Areca Plate', image: fp7 },
+  { name: '8" Round Areca Plate', image: fp8 },
 ];
 
 const featuredAutoplay = Autoplay({

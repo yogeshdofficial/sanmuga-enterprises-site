@@ -264,11 +264,11 @@ export const productCategories: ProductCategory[] = [
     ],
   },
   {
-    name: "Disposable Utensils",
+    name: "Bagasse Utensils",
     products: [
       {
         id: "2859627979012",
-        name: "6 inchDisposable Biodegradable Bagasse Round Plate",
+        name: "6 inch Bagasse Biodegradable Bagasse Round Plate",
         price: "₹ 2.50/Piece",
         specs: {
           "Shape": "Round",
@@ -280,12 +280,12 @@ export const productCategories: ProductCategory[] = [
         description: "Eco-friendly round plate made from sugarcane bagasse, designed for single-use food service. Durable, compostable, and microwave-safe, ideal for catering, events, and food stalls seeking sustainable alternatives to plastic tableware.",
         images: [img_2859627979012_01],
         image: img_2859627979012_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/6-inchdisposable-biodegradable-bagasse-round-plate-2859627979012.html",
       },
       {
         id: "2859627977612",
-        name: "7 Inch Organic Disposable Round Plate",
+        name: "7 Inch Organic Bagasse Round Plate",
         price: "₹ 3/Piece",
         specs: {
           "Shape": "Round",
@@ -297,12 +297,12 @@ export const productCategories: ProductCategory[] = [
         description: "These 7-inch round plates are 100% organic, non-toxic, and eco-friendly. Microwave and refrigerator safe, they feature oil and water repellent properties. Ideal for catering, events, and food service, with 25 pieces per pack.",
         images: [img_2859627977612_01],
         image: img_2859627977612_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/7-inch-organic-disposable-round-plate-2859627977612.html",
       },
       {
         id: "2859627978133",
-        name: "9 Inch Organic Disposable Round Plate",
+        name: "9 Inch Organic Bagasse Round Plate",
         price: "₹ 4/Piece",
         specs: {
           "Shape": "Round",
@@ -314,12 +314,12 @@ export const productCategories: ProductCategory[] = [
         description: "These 9-inch round plates are 100% organic, non-toxic, and microwave/refrigerator safe. Designed with oil and water-repellent properties, they are ideal for eco-friendly catering, events, and food service applications. Supplied in packs of 25.",
         images: [img_2859627978133_01],
         image: img_2859627978133_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/9-inch-organic-disposable-round-plate-2859627978133.html",
       },
       {
         id: "2859627980833",
-        name: "10 Inch 3 Compartment Disposable Round Plate",
+        name: "10 Inch 3 Compartment Bagasse Round Plate",
         price: "₹ 5.50/Piece",
         specs: {
           "Material": "Bagasse",
@@ -332,7 +332,7 @@ export const productCategories: ProductCategory[] = [
         description: "These 10-inch 3-compartment round plates are non-toxic, 100% organic, and oil/water repellent. Microwave and refrigerator safe, they are ideal for catering, events, and food service. Packaged 25 pieces per pack with 1000 pieces per carton.",
         images: [img_2859627980833_01, img_2859627980833_02],
         image: img_2859627980833_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/10-inch-3-compartment-disposable-round-plate-2859627980833.html",
       },
       {
@@ -351,12 +351,12 @@ export const productCategories: ProductCategory[] = [
         description: "10 inch Sugarcane Bagasse plates",
         images: [img_2859595631791_01, img_2859595631791_02],
         image: img_2859595631791_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/10-inch-sugarcane-bagasse-plates-2859595631791.html",
       },
       {
         id: "2859627980148",
-        name: "12 Inch 4 Compartment Round Disposable Plate",
+        name: "12 Inch 4 Compartment Round Bagasse Plate",
         price: "₹ 6/Piece",
         specs: {
           "Material": "Bagasse",
@@ -369,7 +369,7 @@ export const productCategories: ProductCategory[] = [
         description: "These 12-inch round plates feature four compartments for organized food serving. They are non-toxic, 100% organic, microwave and refrigerator safe, and oil/water repellent. Ideal for catering, events, and eco-friendly food service applications.",
         images: [img_2859627980148_01],
         image: img_2859627980148_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/12-inch-4-compartment-round-disposable-plate-2859627980148.html",
       },
       {
@@ -385,12 +385,12 @@ export const productCategories: ProductCategory[] = [
         description: "12 inch sugarcane Bagasse Round Plate",
         images: [img_2859595637830_01, img_2859595637830_02, img_2859595637830_03],
         image: img_2859595637830_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/12-inch-sugarcane-bagasse-round-plate-2859595637830.html",
       },
       {
         id: "2859627994455",
-        name: "360 ml Disposable Organic Round Bowl",
+        name: "360 ml Bagasse Organic Round Bowl",
         price: "₹ 3/Piece",
         specs: {
           "Material": "Bagasse",
@@ -404,12 +404,12 @@ export const productCategories: ProductCategory[] = [
         description: "These 12 oz organic round bowls are non-toxic, microwave and refrigerator safe, and feature oil and water repellent properties. Ideal for eco-friendly food service, each carton contains 1000 pieces with 25 pieces per pack.",
         images: [img_2859627994455_01],
         image: img_2859627994455_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/360-ml-disposable-organic-round-bowl-2859627994455.html",
       },
       {
         id: "2859627990848",
-        name: "Eco Sense Biodegradable Disposable 1D Food Tray",
+        name: "Eco Sense Biodegradable Bagasse 1D Food Tray",
         price: "₹ 2.50/Piece",
         specs: {
           "Material": "Bagasse",
@@ -422,12 +422,12 @@ export const productCategories: ProductCategory[] = [
         description: "These eco-friendly 1D trays are designed for sustainable food service and catering. Made from compostable materials, they offer a durable, leak-resistant solution for serving hot or cold meals in commercial and event settings.",
         images: [img_2859627990848_01],
         image: img_2859627990848_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/eco-sense-biodegradable-disposable-1d-food-tray-2859627990848.html",
       },
       {
         id: "2859627982033",
-        name: "7 Inch Square Disposable Plates",
+        name: "7 Inch Square Bagasse Plates",
         price: "₹ 3/Piece",
         specs: {
           "Material": "Bagasse",
@@ -437,12 +437,12 @@ export const productCategories: ProductCategory[] = [
         description: "These 7-inch square disposable plates from Redwing Bioware are designed for eco-friendly food service. Each pack contains 50 pieces, suitable for catering, events, and food outlets requiring convenient, single-use tableware solutions.",
         images: [img_2859627982033_01],
         image: img_2859627982033_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/7-inch-square-disposable-plates-2859627982033.html",
       },
       {
         id: "2859627994933",
-        name: "180 ml Disposable Organic Round Bowl",
+        name: "180 ml Bagasse Organic Round Bowl",
         price: "₹ 2/Piece",
         specs: {
           "Material": "Bagasse",
@@ -457,7 +457,7 @@ export const productCategories: ProductCategory[] = [
         description: "These 6 oz round bowls are 100% organic, non-toxic, and microwave/refrigerator safe. Designed with oil and water repellent properties, they are ideal for eco-friendly food service. Each pack contains 50 units with 2400 pieces per carton.",
         images: [img_2859627994933_01],
         image: img_2859627994933_01,
-        category: "Disposable Utensils",
+        category: "Bagasse Utensils",
         detailUrl: "//www.indiamart.com/proddetail/180-ml-disposable-organic-round-bowl-2859627994933.html",
       },
     ],
