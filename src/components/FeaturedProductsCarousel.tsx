@@ -15,7 +15,7 @@ import fp1 from "@/assets/FP1.webp";
 import fp2 from "@/assets/fp2.webp";
 import fp3 from "@/assets/FP3.webp";
 import fp4 from "@/assets/FP4.webp";
-import fp5 from "@/assets/FP53.jpeg";
+import fp5 from "@/assets/fp53.jpeg";
 import fp6 from "@/assets/FP6.jpeg";
 import fp7 from "@/assets/FP7.jpeg";
 import fp8 from "@/assets/fp8.jpeg";
