@@ -233,6 +233,39 @@ export const productCategories: ProductCategory[] = [
         detailUrl: "//www.indiamart.com/proddetail/10-inch-square-areca-leaf-plate-2858877247012.html",
       },
     ],
+  }, {
+    name: "Printed Plates",
+    products: [
+      {
+        id: "salleafplate-01",
+        name: "Sal Leaf Plate",
+        price: "₹ 7/Piece",
+        specs: {
+          "Material": "Sal Leaf",
+          "Usage": "Event",
+          "Pack Size": "50 pieces",
+        },
+        description: "Natural sal leaf plates are handmade from dried sal leaves. They are 100% biodegradable, compostable, and eco-friendly. Perfect for events, parties, and daily use.",
+        images: [img_salleafplate_01, img_salleafplate_02, img_salleafplate_03],
+        image: img_salleafplate_01,
+        category: "Printed Plates",
+      },
+      {
+        id: "greenprinted-01",
+        name: "Green Printed Paper Plate",
+        price: "₹ 3.50/Piece",
+        specs: {
+          "Material": "Paper",
+          "Plate Size": "12 inch",
+          "Usage": "Event",
+          "Pack Size": "50 pieces",
+        },
+        description: "Green printed paper plates are sturdy, lightweight, and visually appealing. Ideal for parties, events, and everyday dining. 100% recyclable and eco-friendly.",
+        images: [img_greenprinted_01, img_greenprinted_02, img_greenprinted_03, img_greenprinted_04],
+        image: img_greenprinted_01,
+        category: "Printed Plates",
+      },
+    ],
   },
   {
     name: "Areca Leaf Bowl",
@@ -828,40 +861,7 @@ export const productCategories: ProductCategory[] = [
       },
     ],
   },
-  {
-    name: "Printed Plates",
-    products: [
-      {
-        id: "salleafplate-01",
-        name: "Sal Leaf Plate",
-        price: "₹ 7/Piece",
-        specs: {
-          "Material": "Sal Leaf",
-          "Usage": "Event",
-          "Pack Size": "50 pieces",
-        },
-        description: "Natural sal leaf plates are handmade from dried sal leaves. They are 100% biodegradable, compostable, and eco-friendly. Perfect for events, parties, and daily use.",
-        images: [img_salleafplate_01, img_salleafplate_02, img_salleafplate_03],
-        image: img_salleafplate_01,
-        category: "Printed Plates",
-      },
-      {
-        id: "greenprinted-01",
-        name: "Green Printed Paper Plate",
-        price: "₹ 3.50/Piece",
-        specs: {
-          "Material": "Paper",
-          "Plate Size": "12 inch",
-          "Usage": "Event",
-          "Pack Size": "50 pieces",
-        },
-        description: "Green printed paper plates are sturdy, lightweight, and visually appealing. Ideal for parties, events, and everyday dining. 100% recyclable and eco-friendly.",
-        images: [img_greenprinted_01, img_greenprinted_02, img_greenprinted_03, img_greenprinted_04],
-        image: img_greenprinted_01,
-        category: "Printed Plates",
-      },
-    ],
-  },];
+];
 
 export const products: Product[] = productCategories.flatMap((category) => category.products);
 
